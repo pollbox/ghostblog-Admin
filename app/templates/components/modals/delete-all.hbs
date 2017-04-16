@@ -1,13 +1,13 @@
 <header class="modal-header">
-    <h1>Would you really like to delete all content from your blog?</h1>
+    <h1>您确定要从您的博客中删除所有内容?</h1>
 </header>
-<a class="close icon-x" href="" title="Close" {{action "closeModal"}}><span class="hidden">Close</span></a>
+<a class="close icon-x" href="" title="Close" {{action "closeModal"}}><span class="hidden">关闭</span></a>
 
 <div class="modal-body">
-    <p>This is permanent! No backups, no restores, no magic undo button. <br /> We warned you, ok?</p>
+    <p>这是永久的！ 没有备份，没有恢复，没有魔法恢复按钮. <br />我们警告你，好吗?</p>
 </div>
 
 <div class="modal-footer">
-    <button {{action "closeModal"}} class="btn btn-default btn-minor">Cancel</button>
-    {{#gh-spin-button action="confirm" class="btn btn-red" submitting=submitting}}Delete{{/gh-spin-button}}
+    <button {{action "closeModal"}} class="btn btn-default btn-minor">取消</button>
+    {{#gh-spin-button action="confirm" class="btn btn-red" submitting=submitting}}删除{{/gh-spin-button}}
 </div>

@@ -1,8 +1,8 @@
 <section class="gh-view view-subscribers">
     <header class="view-header">
-        {{#gh-view-title openMobileMenu="openMobileMenu"}}<span>Subscribers</span>{{/gh-view-title}}
+        {{#gh-view-title openMobileMenu="openMobileMenu"}}<span>订阅者</span>{{/gh-view-title}}
         <div class="view-actions">
-            {{#link-to "subscribers.new" class="btn btn-green"}}Add Subscriber{{/link-to}}
+            {{#link-to "subscribers.new" class="btn btn-green"}}添加订阅者{{/link-to}}
         </div>
     </header>
 
@@ -16,20 +16,20 @@
 
         <div class="subscribers-sidebar">
             <div class="settings-menu-header">
-                <h4>Import Subscribers</h4>
+                <h4>导入订阅者</h4>
             </div>
             <div class="settings-menu-content subscribers-import-buttons">
-                {{#link-to "subscribers.import" class="btn btn-hover-green"}}Import CSV{{/link-to}}
-                <a {{action 'exportData'}} class="btn">Export CSV</a>
+                {{#link-to "subscribers.import" class="btn btn-hover-green"}}导入CSV{{/link-to}}
+                <a {{action 'exportData'}} class="btn">导出CSV</a>
             </div>
 
             <div class="settings-menu-header">
-                <h4>Quick Stats</h4>
+                <h4>快速统计</h4>
             </div>
             <div class="settings-menu-content">
                 <ul>
                     <li>
-                        Total Subscribers:
+                        总订阅人数:
                         <span id="total-subscribers">{{total}}</span>
                     </li>
                 </ul>

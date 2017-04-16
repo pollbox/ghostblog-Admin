@@ -1,13 +1,13 @@
 <header class="modal-header">
-    <h1>Are you sure?</h1>
+    <h1>你确定?</h1>
 </header>
-<a class="close icon-x" href="" title="Close" {{action "closeModal"}}><span class="hidden">Close</span></a>
+<a class="close icon-x" href="" title="Close" {{action "closeModal"}}><span class="hidden">关闭</span></a>
 
 <div class="modal-body">
-    <strong>WARNING:</strong> All data for this subscriber will be deleted. There is no way to recover this.
+    <strong>WARNING:</strong> 此订阅者的所有数据将被删除, 没有办法恢复这个.
 </div>
 
 <div class="modal-footer">
-    <button {{action "closeModal"}} class="btn btn-default btn-minor">Cancel</button>
-    {{#gh-spin-button action="confirm" class="btn btn-red" submitting=submitting}}Delete{{/gh-spin-button}}
+    <button {{action "closeModal"}} class="btn btn-default btn-minor">取消</button>
+    {{#gh-spin-button action="confirm" class="btn btn-red" submitting=submitting}}删除{{/gh-spin-button}}
 </div>

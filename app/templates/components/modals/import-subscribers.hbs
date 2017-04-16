@@ -1,9 +1,9 @@
 <header class="modal-header">
     <h1>
         {{#if response}}
-            Import Successful
+            导入成功
         {{else}}
-            Import Subscribers
+            导入订阅者
         {{/if}}
     </h1>
 </header>
@@ -13,7 +13,7 @@
     {{#liquid-if response class="fade-transition"}}
         <table class="subscribers-import-results">
             <tr>
-                <td>Imported:</td>
+                <td>导入:</td>
                 <td align="left">{{response.imported}}</td>
             </tr>
             {{#if response.duplicates}}
@@ -24,7 +24,7 @@
             {{/if}}
             {{#if response.invalid}}
                 <tr>
-                    <td>Invalid:</td>
+                    <td>无效:</td>
                     <td align="left">{{response.invalid}}</td>
                 </tr>
             {{/if}}
@@ -33,7 +33,7 @@
         {{gh-file-uploader
             url=uploadUrl
             paramName="subscribersfile"
-            labelText="Select or drag-and-drop a CSV file."
+            labelText="选择或拖放CSV文件."
             uploadStarted=(action "uploadStarted")
             uploadFinished=(action "uploadFinished")
             uploadSuccess=(action "uploadSuccess")}}
@@ -42,6 +42,6 @@
 
 <div class="modal-footer">
     <button {{action "closeModal"}} disabled={{closeDisabled}} class="btn btn-default btn-minor">
-        {{#if response}}Close{{else}}Cancel{{/if}}
+        {{#if response}}关闭{{else}}取消{{/if}}
     </button>
 </div>

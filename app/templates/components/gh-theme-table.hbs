@@ -8,19 +8,19 @@
                 <div class="theme-list-item-aside">
                     {{#if theme.isDeletable}}
                         <a href="#" {{action deleteTheme theme}} disabled={{theme.active}} class="theme-list-action">
-                            Delete
+                            删除
                         </a>
                     {{/if}}
 
                     <a href="#" {{action downloadTheme theme}} class="theme-list-action">
-                        Download
+                        下载
                     </a>
 
                     {{#if theme.active}}
-                        <span class="theme-list-action theme-list-action-activate">Active</span>
+                        <span class="theme-list-action theme-list-action-activate">启用</span>
                     {{else}}
                         <a href="#" {{action activateTheme theme}} class="theme-list-action theme-list-action-activate">
-                            Activate
+                            启用
                         </a>
                     {{/if}}
                 </div>

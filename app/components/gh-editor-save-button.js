@@ -41,17 +41,17 @@ export default Component.extend({
     // Text for non-scheduled Posts
     publishText: computed('isPublished', 'postOrPage', 'scheduledWillPublish', function () {
         if (this.get('scheduledWillPublish')) {
-            return (this.get('willPublish') || this.get('willSchedule')) ? `Update ${this.get('postOrPage')}` : 'Publish Now';
+            return (this.get('willPublish') || this.get('willSchedule')) ? `更新 ${this.get('postOrPage')}` : '立即发布';
         } else {
-            return this.get('isPublished') ? `Update ${this.get('postOrPage')}` : 'Publish Now';
+            return this.get('isPublished') ? `更新 ${this.get('postOrPage')}` : '立即发布';
         }
     }),
 
     draftText: computed('isPublished', 'scheduledWillPublish', function () {
         if (this.get('scheduledWillPublish')) {
-            return (!this.get('willPublish') || !this.get('willSchedule')) ? 'Unpublish' : 'Save Draft';
+            return (!this.get('willPublish') || !this.get('willSchedule')) ? '取消发布' : '保存草稿';
         } else {
-            return this.get('isPublished') ? 'Unpublish' : 'Save Draft';
+            return this.get('isPublished') ? '取消发布' : '保存草稿';
         }
     }),
 
@@ -60,9 +60,9 @@ export default Component.extend({
         // editor and didn't refresh yet. To do so, we use the 'scheduledWillPublish' CP helper
         if (this.get('scheduledWillPublish')) {
             if (this.get('willSchedule') || this.get('willPublish')) {
-                return `Update ${this.get('postOrPage')}`;
+                return `更新 ${this.get('postOrPage')}`;
             } else {
-                return 'Unpublish';
+                return '取消发布';
             }
         } else {
             return this.get('willPublish') ? this.get('publishText') : this.get('draftText');
@@ -71,11 +71,11 @@ export default Component.extend({
 
     // Text for scheduled Posts
     scheduleText: computed('isScheduled', 'postOrPage', function () {
-        return this.get('isScheduled') ? `Update ${this.get('postOrPage')}` : 'Schedule Post';
+        return this.get('isScheduled') ? `更新 ${this.get('postOrPage')}` : '计划发布';
     }),
 
     unscheduleText: computed('isScheduled', function () {
-        return this.get('isScheduled') ? 'Unschedule' : 'Save Draft';
+        return this.get('isScheduled') ? '取消预约' : '保存草稿';
     }),
 
     saveScheduleText: computed('willSchedule', 'scheduleText', 'unscheduleText', function () {
@@ -83,7 +83,7 @@ export default Component.extend({
     }),
 
     deleteText: computed('postOrPage', function () {
-        return `Delete ${this.get('postOrPage')}`;
+        return `删除 ${this.get('postOrPage')}`;
     }),
 
     activeClass: computed('willPublish', 'willSchedule', function () {

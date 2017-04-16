@@ -1,8 +1,8 @@
 {{#gh-content-view-container as |previewIsHidden|}}
 <header class="view-header">
-    {{#gh-view-title openMobileMenu="openMobileMenu"}}<span>Content</span>{{/gh-view-title}}
+    {{#gh-view-title openMobileMenu="openMobileMenu"}}<span>内容</span>{{/gh-view-title}}
     <section class="view-actions">
-        {{#link-to "editor.new" class="btn btn-green" title="New Post"}}New Post{{/link-to}}
+        {{#link-to "editor.new" class="btn btn-green" title="New Post"}}最新文章{{/link-to}}
     </section>
 </header>
 
@@ -22,22 +22,22 @@
                                 <span class="status">
                                     {{#if component.isPublished}}
                                         {{#if post.page}}
-                                            <span class="page">Page</span>
+                                            <span class="page">页</span>
                                         {{else}}
                                             <time datetime="{{post.publishedAtUTC}}" class="date published">
-                                                Published {{gh-format-timeago post.publishedAtUTC}}
+                                                发布 {{gh-format-timeago post.publishedAtUTC}}
                                             </time>
                                         {{/if}}
                                     {{else}}
                     					{{#if component.isScheduled}}
-                    						<span class="scheduled">Scheduled</span>
+                    						<span class="scheduled">计划</span>
                                             <span>&ndash;
                                                 <time datetime="{{post.publishedAtUTC}}" class-="date scheduled">
                                                     {{gh-format-time-scheduled post.publishedAtUTC component.blogTimezone}}
                                                 </time>
                                             </span>
                     					{{else}}
-                                            <span class="draft">Draft</span>
+                                            <span class="draft">草稿</span>
                     					{{/if}}
                                     {{/if}}
                                 </span>

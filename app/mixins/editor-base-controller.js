@@ -85,7 +85,7 @@ export default Mixin.create({
     tagNames: mapBy('model.tags', 'name'),
 
     postOrPage: computed('model.page', function () {
-        return this.get('model.page') ? 'Page' : 'Post';
+        return this.get('model.page') ? '页面' : '文章';
     }),
 
     // countdown timer to show the time left until publish time for a scheduled post
@@ -231,9 +231,9 @@ export default Mixin.create({
     // used on window.onbeforeunload
     unloadDirtyMessage() {
         return '==============================\n\n' +
-            'Hey there! It looks like you\'re in the middle of writing' +
-            ' something and you haven\'t saved all of your content.' +
-            '\n\nSave before you go!\n\n' +
+                '嘿！它看起来像你正在写作' +
+              ' 你没有保存所有的内容.' +
+              '\n\n请先保存!\n\n' +
             '==============================';
     },
 
@@ -242,42 +242,43 @@ export default Mixin.create({
     messageMap: {
         errors: {
             post: {
-                published: {
-                    published: 'Update failed',
-                    draft: 'Saving failed',
-                    scheduled: 'Scheduling failed'
+                  published: {
+                    published: '更新失败',
+                    draft: '保存失败',
+                    scheduled: '预约失败'
                 },
                 draft: {
-                    published: 'Publish failed',
-                    draft: 'Saving failed',
-                    scheduled: 'Scheduling failed'
+                    published: '发布失败',
+                    draft: '保存失败',
+                    scheduled: '预约失败'
                 },
                 scheduled: {
-                    scheduled: 'Updated failed',
-                    draft: 'Unscheduling failed',
-                    published: 'Publish failed'
+                    scheduled: '更新失败',
+                    draft: '取消预约失败',
+                    published: '发布失败'
                 }
+
 
             }
         },
 
         success: {
             post: {
-                published: {
-                    published: 'Updated.',
-                    draft: 'Saved.',
-                    scheduled: 'Scheduled.'
-                },
-                draft: {
-                    published: 'Published!',
-                    draft: 'Saved.',
-                    scheduled: 'Scheduled.'
-                },
-                scheduled: {
-                    scheduled: 'Updated.',
-                    draft: 'Unscheduled.',
-                    published: 'Published!'
-                }
+              published: {
+                  published: '更新.',
+                  draft: '保存.',
+                  scheduled: '预约.'
+              },
+              draft: {
+                  published: '发布!',
+                  draft: '保存.',
+                  scheduled: '预约.'
+              },
+              scheduled: {
+                  scheduled: '更新.',
+                  draft: '取消预约.',
+                  published: '发布!'
+              }
             }
         }
     },
@@ -296,7 +297,7 @@ export default Mixin.create({
             path = this.get('model.previewUrl');
         }
 
-        message += `&nbsp;<a href="${path}" target="_blank">View ${type}</a>`;
+        message += `&nbsp;<a href="${path}" target="_blank">查看 ${type}</a>`;
 
         notifications.showNotification(message.htmlSafe(), {delayed: delay});
     },
@@ -497,7 +498,7 @@ export default Mixin.create({
             let model = this.get('model');
 
             if (!transition) {
-                this.get('notifications').showAlert('Sorry, there was an error in the application. Please let the Ghost team know what happened.', {type: 'error'});
+                this.get('notifications').showAlert('很抱歉，应用程式发生错误. 请让Ghost团队知道发生了什么.', {type: 'error'});
                 return;
             }
 

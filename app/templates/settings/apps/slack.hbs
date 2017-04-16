@@ -2,7 +2,7 @@
     {{#gh-view-title openMobileMenu="openMobileMenu"}}<span style="padding-left:1px">{{#link-to "settings.apps.index"}}Apps{{/link-to}} <i class="icon-arrow-right" style="display:inline"></i> Slack</span>{{/gh-view-title}}
     <section class="view-actions">
         {{#gh-spin-button id="saveSlackIntegration" class="btn btn-green" action=(action "save") submitting=isSaving}}
-            Save
+            保存
         {{/gh-spin-button}}
     </section>
 </header>
@@ -14,11 +14,11 @@
             </div>
             <div class="app-cell">
                 <h3>Slack</h3>
-                <p>A messaging app for teams</p>
+                <p>团队的消息应用程序</p>
             </div>
         </section>
         <section class="app-subtitle">
-            <p>Automatically send newly published posts to a channel in Slack.</p>
+            <p>自动将新发布的帖子发送到Slack中的频道.</p>
         </section>
 
         <form class="app-config-form" id="slack-settings" novalidate="novalidate" {{action "save" on="submit"}}>
@@ -26,7 +26,7 @@
                 <label for="url">Webhook URL</label>
                 {{gh-input model.url name="slack[url]" update=(action "updateURL") onenter=(action "save") placeholder="https://hooks.slack.com/services/..."}}
                 {{#unless model.errors.url}}
-                    <p>Set up a new incoming webhook <a href="https://my.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks" target="_blank">here</a>, and grab the URL.</p>
+                    <p>设置新的传入Webhook <a href="https://my.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks" target="_blank">here</a>, 并抓取该URL.</p>
                 {{else}}
                     {{gh-error-message errors=model.errors property="url"}}
                 {{/unless}}
@@ -35,7 +35,7 @@
 
         <form class="app-config-form">
             {{#gh-spin-button id="sendTestNotification" class="btn btn-grey" disabled=testNotificationDisabled action=(action "sendTestNotification") submitting=isSendingTest}}
-                Send Test Notification
+                送测试通知
             {{/gh-spin-button}}
         </form>
     </section>

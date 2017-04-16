@@ -6,7 +6,7 @@ export default BaseValidator.create({
         let title = model.get('title');
 
         if (!validator.isLength(title, 0, 150)) {
-            model.get('errors').add('title', 'Title is too long');
+            model.get('errors').add('title', '标题过长');
             this.invalidate();
         }
     },
@@ -15,7 +15,7 @@ export default BaseValidator.create({
         let desc = model.get('description');
 
         if (!validator.isLength(desc, 0, 200)) {
-            model.get('errors').add('description', 'Description is too long');
+            model.get('errors').add('description', '说明过长');
             this.invalidate();
         }
     },
@@ -25,7 +25,7 @@ export default BaseValidator.create({
         let password = model.get('password');
 
         if (isPrivate && password === '') {
-            model.get('errors').add('password', 'Password must be supplied');
+            model.get('errors').add('password', '必须提供密码');
             this.invalidate();
         }
     },
@@ -34,13 +34,13 @@ export default BaseValidator.create({
         let postsPerPage = model.get('postsPerPage');
 
         if (!validator.isInt(postsPerPage)) {
-            model.get('errors').add('postsPerPage', 'Posts per page must be a number');
+            model.get('errors').add('postsPerPage', '每页文章必须是数字');
             this.invalidate();
         } else if (postsPerPage > 1000) {
-            model.get('errors').add('postsPerPage', 'The maximum number of posts per page is 1000');
+            model.get('errors').add('postsPerPage', '每页的文章数上限为1000');
             this.invalidate();
         } else if (postsPerPage < 1) {
-            model.get('errors').add('postsPerPage', 'The minimum number of posts per page is 1');
+            model.get('errors').add('postsPerPage', '每页最少文章数为1');
             this.invalidate();
         }
     }

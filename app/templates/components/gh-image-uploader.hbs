@@ -9,7 +9,7 @@
         </div>
     </div>
     {{#if failureMessage}}
-        <button class="btn btn-green" {{action "reset"}}>Try Again</button>
+        <button class="btn btn-green" {{action "reset"}}>再试一次</button>
     {{/if}}
 {{else}}
     {{#if showUploadForm}}
@@ -28,7 +28,7 @@
         <form class="url-form">
             {{gh-input url class="url" placeholder="http://" update=(action "onInput") onenter=(action "saveUrl")}}
             {{#if saveButton}}
-                <button class="btn btn-blue gh-input" {{action 'saveUrl'}}>Save</button>
+                <button class="btn btn-blue gh-input" {{action 'saveUrl'}}>保存</button>
             {{else}}
                 <div class="description">{{description}}</div>
             {{/if}}
@@ -36,7 +36,7 @@
 
         {{#if canShowUploadForm}}
             <a class="image-upload icon-photos" title="Add image" {{action 'switchForm' 'upload'}}>
-                <span class="hidden">Upload</span>
+                <span class="hidden">上传</span>
             </a>
         {{/if}}
     {{/if}}

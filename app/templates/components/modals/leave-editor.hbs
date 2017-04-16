@@ -1,18 +1,18 @@
 <header class="modal-header">
-    <h1>Are you sure you want to leave this page?</h1>
+    <h1>您确定要离开此网页吗?</h1>
 </header>
-<a class="close icon-x" href="" title="Close" {{action "closeModal"}}><span class="hidden">Close</span></a>
+<a class="close icon-x" href="" title="Close" {{action "closeModal"}}><span class="hidden">关闭</span></a>
 
 <div class="modal-body">
     <p>
-        Hey there! It looks like you're in the middle of writing something and
-        you haven't saved all of your content.
+      嘿！ 看起来你正在写一些东西
+       您尚未保存所有内容。
     </p>
 
-    <p>Save before you go!</p>
+    <p>请离开前保存!</p>
 </div>
 
 <div class="modal-footer">
-    <button {{action "closeModal"}} class="btn btn-default btn-minor">Stay</button>
-    <button {{action "confirm"}} class="btn btn-red">Leave</button>
+    <button {{action "closeModal"}} class="btn btn-default btn-minor">继续</button>
+    <button {{action "confirm"}} class="btn btn-red">保存</button>
 </div>

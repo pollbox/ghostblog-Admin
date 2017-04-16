@@ -4,41 +4,41 @@
     </header>
 
     <section class="view-content settings-debug">
-        <p><strong>Important note:</strong> Labs is a testing ground for experimental features which aren't quite ready for primetime. They may change, break or inexplicably disappear at any time.</p>
+        <p><strong>重要的提示:</strong> Labs 是实验性功能的测试地，这些功能尚未准备好用于黄金时段。 他们可能随时改变，破裂或莫名其妙地消失</p>
         <form id="settings-export">
             <fieldset>
                 <div class="form-group">
-                    <label>Export</label>
+                    <label>导出</label>
                     <button type="button" class="btn btn-blue" {{action "exportData"}}>Export</button>
-                    <p>Export the blog settings and data.</p>
+                    <p>导出博客设置和数据.</p>
                 </div>
             </fieldset>
         </form>
         <form id="settings-import" enctype="multipart/form-data">
             <fieldset>
                 <div class="form-group">
-                    <label>Import</label>
+                    <label>导入</label>
                     {{partial "import-errors"}}
                     {{gh-file-upload id="importfile" classNames="flex" uploadButtonText=uploadButtonText onUpload="onUpload" acceptEncoding=importMimeType}}
-                    <p>Import from another Ghost installation. If you import a user, this will replace the current user & log you out.</p>
+                    <p>从其他Ghost安装导入。 如果您导入用户，则会替换当前用户并注销.</p>
                 </div>
             </fieldset>
         </form>
         <form id="settings-resetdb">
             <fieldset>
                 <div class="form-group">
-                    <label>Delete all Content</label>
-                    <button type="button" class="btn btn-red js-delete" {{action "toggleDeleteAllModal"}}>Delete</button>
-                    <p>Delete all posts and tags from the database.</p>
+                    <label>删除所有内容</label>
+                    <button type="button" class="btn btn-red js-delete" {{action "toggleDeleteAllModal"}}>删除</button>
+                    <p>从数据库中删除所有帖子和标签.</p>
                 </div>
             </fieldset>
         </form>
         <form id="settings-testmail">
             <fieldset>
                 <div class="form-group">
-                    <label>Send a test email</label>
-                    {{#gh-spin-button id="sendtestemail" class="btn btn-blue" action="sendTestEmail" submitting=submitting}}Send{{/gh-spin-button}}
-                    <p>Sends a test email to your address.</p>
+                    <label>启用测试版功能</label>
+                    {{#gh-spin-button id="sendtestemail" class="btn btn-blue" action="sendTestEmail" submitting=submitting}}发送{{/gh-spin-button}}
+                    <p>向您的地址发送测试电子邮件.</p>
                 </div>
             </fieldset>
         </form>
@@ -46,16 +46,16 @@
         <form>
             <fieldset>
                 <div class="form-group for-checkbox">
-                    <h3>Enable Beta Features</h3>
-                    {{#gh-feature-flag "publicAPI"}}
-                        Public API - For full instructions, read the <a href="http://support.ghost.org/public-api-beta/">developer guide</a>.
-                    {{/gh-feature-flag}}
-                    {{#gh-feature-flag "subscribers"}}
-                        Subscribers - Collect email addresses from your readers, more info in <a href="http://support.ghost.org/subscribers-beta/">the docs</a>
-                    {{/gh-feature-flag}}
-                    {{#gh-feature-flag "internalTags"}}
-                        Internal Tags - tags which don't show up in your theme, more info in <a href="http://support.ghost.org/internal-tags-beta/">the docs</a>.
-                    {{/gh-feature-flag}}
+                  <h3>启用测试版功能</h3>
+                  {{#gh-feature-flag "publicAPI"}}
+                    公共API - 有关完整说明，请阅读 <a href="http://support.ghost.org/public-api-beta/">开发人员指南</a>.
+                {{/gh-feature-flag}}
+                {{#gh-feature-flag "subscribers"}}
+                    订阅者 - 从您的读者收集电子邮件地址，更多信息 <a href="http://support.ghost.org/subscribers-beta/">文档</a>
+                {{/gh-feature-flag}}
+                {{#gh-feature-flag "internalTags"}}
+                    内部标记 - 不会显示在您的主题中的标记，更多信息 <a href="http://support.ghost.org/internal-tags-beta/">文档</a>.
+                {{/gh-feature-flag}}
                 </div>
             </fieldset>
         </form>

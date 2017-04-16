@@ -1,4 +1,4 @@
-<label for="activeTimezone">Timezone</label>
+<label for="activeTimezone">时区</label>
 <span class="gh-select" data-select-text="{{selectedTimezone.label}}" tabindex="0">
     {{gh-select-native
         id="activeTimezone"
@@ -11,6 +11,6 @@
     }}
 </span>
 {{#if hasTimezoneOverride}}
-    <p>Your timezone has been automatically set to {{activeTimezone}}.</p>
+    <p>您的时区已自动设置为 {{activeTimezone}}.</p>
 {{/if}}
-<p>The local time here is currently {{localTime}}</p>
+<p>这里的当地时间是目前 {{localTime}}</p>

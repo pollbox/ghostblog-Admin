@@ -97,7 +97,7 @@ module.exports = function (defaults) {
                 import: ['jquery-deparam.js']
             },
             moment: {
-                import: ['moment.js']
+                import: ['moment.js','locale/zh-cn.js']
             },
             'moment-timezone': {
                 import: ['builds/moment-timezone-with-data.js']

@@ -30,7 +30,7 @@ export default Controller.extend({
 
             invoke(this, 'save').then(() => {
                 this.get('ajax').post(slackApi).then(() => {
-                    notifications.showAlert('Check your slack channel test message.', {type: 'info', key: 'slack-test.send.success'});
+                    notifications.showAlert('检查您的松弛通道测试消息.', {type: 'info', key: 'slack-test.send.success'});
                 }).catch((error) => {
                     notifications.showAPIError(error, {key: 'slack-test:send'});
                     throw error;
