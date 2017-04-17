@@ -7,7 +7,7 @@ import styleBody from 'ghost-admin/mixins/style-body';
 const {canInvoke} = Ember;
 
 export default AuthenticatedRoute.extend(styleBody, {
-    titleToken: 'Sign Out',
+    titleToken: '注销',
 
     classNames: ['ghost-signout'],
 

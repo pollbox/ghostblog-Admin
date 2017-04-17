@@ -5,7 +5,7 @@ import styleBody from 'ghost-admin/mixins/style-body';
 import {isBlank} from 'ember-utils';
 
 export default Route.extend(styleBody, {
-    titleToken: 'Setup',
+    titleToken: '建立',
 
     classNames: ['ghost-setup'],
 

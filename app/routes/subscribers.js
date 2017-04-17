@@ -3,7 +3,7 @@ import injectService from 'ember-service/inject';
 import AuthenticatedRoute from 'ghost-admin/routes/authenticated';
 
 export default AuthenticatedRoute.extend({
-    titleToken: 'Subscribers',
+    titleToken: '订阅者',
 
     feature: injectService(),
 

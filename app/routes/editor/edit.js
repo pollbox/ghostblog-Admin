@@ -5,7 +5,7 @@ import isNumber from 'ghost-admin/utils/isNumber';
 import isFinite from 'ghost-admin/utils/isFinite';
 
 export default AuthenticatedRoute.extend(base, {
-    titleToken: 'Editor',
+    titleToken: '编辑',
 
     beforeModel(transition) {
         this.set('_transitionedFromNew', transition.data.fromNew);

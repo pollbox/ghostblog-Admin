@@ -3,7 +3,7 @@ import CurrentUserSettings from 'ghost-admin/mixins/current-user-settings';
 import styleBody from 'ghost-admin/mixins/style-body';
 
 export default AuthenticatedRoute.extend(styleBody, CurrentUserSettings, {
-    titleToken: 'Settings - Apps',
+    titleToken: '设置-应用',
 
     classNames: ['settings-view-apps'],
 

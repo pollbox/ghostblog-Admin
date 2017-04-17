@@ -8,7 +8,7 @@ import DS from 'ember-data';
 const {Errors} = DS;
 
 export default Route.extend(styleBody, {
-    titleToken: 'Sign In',
+    titleToken: '签到',
 
     classNames: ['ghost-login'],
 

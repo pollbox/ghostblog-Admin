@@ -6,7 +6,7 @@ import ShortcutsRoute from 'ghost-admin/mixins/shortcuts-route';
 import PaginationMixin from 'ghost-admin/mixins/pagination';
 
 export default AuthenticatedRoute.extend(CurrentUserSettings, PaginationMixin, ShortcutsRoute, {
-    titleToken: 'Settings - Tags',
+    titleToken: '设置-标签',
 
     paginationModel: 'tag',
     paginationSettings: {

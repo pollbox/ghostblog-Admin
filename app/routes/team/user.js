@@ -4,7 +4,7 @@ import CurrentUserSettings from 'ghost-admin/mixins/current-user-settings';
 import styleBody from 'ghost-admin/mixins/style-body';
 
 export default AuthenticatedRoute.extend(styleBody, CurrentUserSettings, {
-    titleToken: 'Team - User',
+    titleToken: '团队-用户',
 
     classNames: ['team-view-user'],
 

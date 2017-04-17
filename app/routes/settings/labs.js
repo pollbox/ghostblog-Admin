@@ -3,7 +3,7 @@ import styleBody from 'ghost-admin/mixins/style-body';
 import CurrentUserSettings from 'ghost-admin/mixins/current-user-settings';
 
 export default AuthenticatedRoute.extend(styleBody, CurrentUserSettings, {
-    titleToken: 'Settings - Labs',
+    titleToken: '设置-Labs',
 
     classNames: ['settings'],
 
