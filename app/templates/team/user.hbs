@@ -155,6 +155,30 @@
                     <p>您个人Twitter个人资料的网址</p>
                 {{/gh-form-group}}
 
+                {{#gh-form-group errors=user.errors hasValidated=user.hasValidated property="weibo"}}
+                    <label for="user-weibo">微博个人资料</label>
+                    <input value={{user.weibo}} oninput={{action (mut _scratchWeibo) value="target.value"}} {{action "validateWeiboUrl" on="focusOut"}} type="url" class="gh-input" id="user-weibo" name="user[weibo]"  placeholder="https://www.weibo.com/username" autocorrect="off" />
+                    {{gh-error-message errors=user.errors property="weibo"}}
+                    <p>您个人微博个人资料的网址</p>
+                {{/gh-form-group}}
+
+                <div class="form-group">
+                    <label>公众号微信二维码</label>
+                    {{#if model.weixin}}
+                        <img class="blog-weixin" src="{{user.weixin}}" alt="weixin photo" role="button" {{action "toggleUploadWeixinModal"}}>
+                    {{else}}
+                        <button type="button" class="btn btn-green js-modal-weixin" {{action "toggleUploadWeixinModal"}}>上传图片</button>
+                    {{/if}}
+                    <p>在您的网站上显示公众号微信图片</p>
+
+                    {{#if showUploadWeixinModal}}
+                        {{gh-fullscreen-modal "upload-image"
+                                model=(hash model=model imageProperty="weixin")
+                                close=(action "toggleUploadWeixinModal")
+                                modifier="action wide"}}
+                    {{/if}}
+                </div>
+
                 {{#gh-form-group errors=user.errors hasValidated=user.hasValidated property="bio" class="bio-container"}}
                     <label for="user-bio">Bio(个人简介)</label>
                     {{gh-textarea user.bio id="user-bio" focusOut=(action "validate" "bio" target=user) update=(action (mut user.bio))}}

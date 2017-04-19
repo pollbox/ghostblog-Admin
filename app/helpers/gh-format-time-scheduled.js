@@ -9,7 +9,7 @@ export function timeToSchedule(params) {
     let [time] = params;
 
     if (blogTimezone.get('isFulfilled')) {
-        return moment.utc(time).tz(blogTimezone.get('content')).format('DD MMM YYYY, HH:mm');
+        return moment.utc(time).tz(blogTimezone.get('content')).format('YYYY-MM-DD HH:mm');
     }
 }
 

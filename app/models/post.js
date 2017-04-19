@@ -75,7 +75,7 @@ export default Model.extend(Comparable, ValidationEngine, {
     featured: attr('boolean', {defaultValue: false}),
     page: attr('boolean', {defaultValue: false}),
     status: attr('string', {defaultValue: 'draft'}),
-    language: attr('string', {defaultValue: 'en_US'}),
+    language: attr('string', {defaultValue: 'zh_CN'}),
     metaTitle: attr('string'),
     metaDescription: attr('string'),
     author: belongsTo('user', {async: true}),

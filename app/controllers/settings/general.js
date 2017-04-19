@@ -14,6 +14,7 @@ export default Controller.extend(SettingsSaveMixin, {
 
     showUploadLogoModal: false,
     showUploadCoverModal: false,
+    showUploadWeixinModal: false,
     showDeleteThemeModal: notEmpty('themeToDelete'),
 
     ajax: injectService(),
@@ -22,12 +23,15 @@ export default Controller.extend(SettingsSaveMixin, {
     notifications: injectService(),
     session: injectService(),
     _scratchFacebook: null,
+    _scratchWeibo: null,
     _scratchTwitter: null,
 
     logoImageSource: computed('model.logo', function () {
         return this.get('model.logo') || '';
     }),
-
+    weixinImageSource: computed('model.weixin', function () {
+        return this.get('model.weixin') || '';
+    }),
     coverImageSource: computed('model.cover', function () {
         return this.get('model.cover') || '';
     }),
@@ -126,7 +130,9 @@ export default Controller.extend(SettingsSaveMixin, {
         toggleUploadCoverModal() {
             this.toggleProperty('showUploadCoverModal');
         },
-
+        toggleUploadWeixinModal() {
+            this.toggleProperty('showUploadWeixinModal');
+        },
         toggleUploadLogoModal() {
             this.toggleProperty('showUploadLogoModal');
         },
@@ -198,6 +204,72 @@ export default Controller.extend(SettingsSaveMixin, {
             }
         },
 
+        validateWeiboUrl() {
+            let newUrl = this.get('_scratchWeibo');
+            let oldUrl = this.get('model.facebook');
+            let errMessage = '';
+
+            if (newUrl === '') {
+                // Clear out the Facebook url
+                this.set('model.weibo', '');
+                this.get('model.errors').remove('weibo');
+                return;
+            }
+
+            // _scratchFacebook will be null unless the user has input something
+            if (!newUrl) {
+                newUrl = oldUrl;
+            }
+
+            // If new url didn't change, exit
+            if (newUrl === oldUrl) {
+                this.get('model.errors').remove('weibo');
+                return;
+            }
+
+            if (newUrl.match(/(?:weibo\.com\/)(\S+)/) || newUrl.match(/([a-z\d\.]+)/i)) {
+                let username = [];
+
+                if (newUrl.match(/(?:weibo\.com\/)(\S+)/)) {
+                    [ , username ] = newUrl.match(/(?:weibo\.com\/)(\S+)/);
+                } else {
+                    [ , username ] = newUrl.match(/(?:https\:\/\/|http\:\/\/)?(?:www\.)?(?:\w+\.\w+\/+)?(\S+)/mi);
+                }
+
+                // check if we have a /page/username or without
+                if (username.match(/^(?:\/)?(u?\/\S+)/mi)) {
+                    // we got a page url, now save the username without the / in the beginning
+
+                    [ , username ] = username.match(/^(?:\/)?(u?\/\S+)/mi);
+                } else if (username.match(/^(http|www)|(\/)/) || !username.match(/^([a-z\d\.]{5,50})$/mi)) {
+                    errMessage = !username.match(/^([a-z\d\.]{5,50})$/mi) ? '你的个性域名不是有效微博名称' : '网址格式如 https://weibo.com/yourPage';
+
+                    this.get('model.errors').add('weibo', errMessage);
+                    this.get('model.hasValidated').pushObject('weibo');
+                    return;
+                }
+
+                newUrl = `https://www.weibo.com/${username}`;
+                this.set('model.weibo', newUrl);
+
+                this.get('model.errors').remove('weibo');
+                this.get('model.hasValidated').pushObject('weibo');
+
+                // User input is validated
+                return this.save().then(() => {
+                    this.set('model.weibo', '');
+                    run.schedule('afterRender', this, function () {
+                        this.set('model.weibo', newUrl);
+                    });
+                });
+            } else {
+                errMessage = '网址格式必须为 ' +
+                    'https://www.weibo.com/yourPage';
+                this.get('model.errors').add('weibo', errMessage);
+                this.get('model.hasValidated').pushObject('weibo');
+                return;
+            }
+        },
         validateTwitterUrl() {
             let newUrl = this.get('_scratchTwitter');
             let oldUrl = this.get('model.twitter');

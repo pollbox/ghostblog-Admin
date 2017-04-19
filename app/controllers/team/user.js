@@ -15,7 +15,9 @@ export default Controller.extend({
     showTransferOwnerModal: false,
     showUploadCoverModal: false,
     showUplaodImageModal: false,
+    showUplaodWeixinModal: false,
     _scratchFacebook: null,
+    _scratchWeibo: null,
     _scratchTwitter: null,
 
     ajax: injectService(),
@@ -270,7 +272,74 @@ export default Controller.extend({
                 return;
             }
         },
+        validateWeiboUrl() {
+            let newUrl = this.get('_scratchWeibo');
+            let oldUrl = this.get('user.weibo');
+            let errMessage = '';
 
+            if (newUrl === '') {
+                // Clear out the weibo url
+                this.set('user.weibo', '');
+                this.get('user.errors').remove('weibo');
+                return;
+            }
+
+            // _scratchFacebook will be null unless the user has input something
+            if (!newUrl) {
+                newUrl = oldUrl;
+            }
+
+            // If new url didn't change, exit
+            if (newUrl === oldUrl) {
+                this.get('user.errors').remove('weibo');
+                return;
+            }
+
+            // TODO: put the validation here into a validator
+            if (newUrl.match(/(?:weibo\.com\/)(\S+)/) || newUrl.match(/([a-z\d\.]+)/i)) {
+                let username = [];
+
+                if (newUrl.match(/(?:weibo.com\/)(\S+)/)) {
+                    [ , username ] = newUrl.match(/(?:weibo\.com\/)(\S+)/);
+                } else {
+                    [ , username ] = newUrl.match(/(?:https\:\/\/|http\:\/\/)?(?:www\.)?(?:\w+\.\w+\/+)?(\S+)/mi);
+                }
+
+                // check if we have a /u/username or without
+                if (username.match(/^(?:\/)?(u?\/\S+)/mi)) {
+                    // we got a page url, now save the username without the / in the beginning
+
+                    [ , username ] = username.match(/^(?:\/)?(u?\/\S+)/mi);
+                } else if (username.match(/^(http|www)|(\/)/) || !username.match(/^([a-z\d\.]{5,50})$/mi)) {
+                    errMessage = !username.match(/^([a-z\d\.]{5,50})$/mi) ? '无法验证微博用户' : '网址格式必须如 https://www.weibo.com/yourUsername';
+
+                    this.get('user.errors').add('weibo', errMessage);
+                    this.get('user.hasValidated').pushObject('weibo');
+                    return;
+                }
+
+                newUrl = `https://www.weibo.com/${username}`;
+                this.set('user.weibo', newUrl);
+
+                this.get('user.errors').remove('weibo');
+                this.get('user.hasValidated').pushObject('weibo');
+
+                // User input is validated
+                this.get('save').perform().then(() => {
+                    // necessary to update the value in the input field
+                    this.set('user.weibo', '');
+                    run.schedule('afterRender', this, function () {
+                        this.set('user.weibo', newUrl);
+                    });
+                });
+            } else {
+                errMessage = '网址格式必须如 ' +
+                    'https://www.weibo.com/yourUsername';
+                this.get('user.errors').add('weibo', errMessage);
+                this.get('user.hasValidated').pushObject('weibo');
+                return;
+            }
+        },
         validateTwitterUrl() {
             let newUrl = this.get('_scratchTwitter');
             let oldUrl = this.get('user.twitter');
@@ -378,6 +447,9 @@ export default Controller.extend({
 
         toggleUploadImageModal() {
             this.toggleProperty('showUploadImageModal');
+        },
+        toggleUploadWeixinModal() {
+            this.toggleProperty('showUploadWeixinModal');
         },
 
         // TODO: remove those mutation actions once we have better

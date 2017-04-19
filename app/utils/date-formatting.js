@@ -13,7 +13,7 @@ const parseDateFormats = ['DD MMM YY @ HH:mm', 'DD MMM YY HH:mm',
                           'DD MMM @ HH:mm', 'DD MMM HH:mm',
                           'D MMM @ HH:mm', 'D MMM HH:mm'];
 
-const displayDateFormat = 'DD MMM YY @ HH:mm';
+const displayDateFormat = 'YYYY-MM-DD HH:mm';
 
 // Add missing timestamps
 function verifyTimeStamp(dateString) {
