@@ -2,7 +2,11 @@
   "name": "ghost-admin",
   "version": "0.11.7",
   "description": "Ember.js admin client for Ghost",
-  "author": "Ghost Foundation",
+  "author": {
+      "name": "pollbox",
+      "email": "pollbox@dingtalk.com",
+      "url": "https://ghostblog.cn"
+  },
   "homepage": "http://ghost.org",
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@
 
 <a href="https://travis-ci.org/TryGhost/Ghost-Admin"><img src="https://travis-ci.org/TryGhost/Ghost-Admin.svg?branch=master" alt="Build status" /></a>
 
-这是与[Ghost](https://github.com/tryghost/ghost)一起提供的基于Ember.js的客户管理端。请参阅[安装和开发说明](https://github.com/TryGhost/Ghost#quick-start-install)目录。
+This is the home of Ember.js based admin client that ships with [Ghost](https://github.com/tryghost/ghost). For now, refer to that repository for [install and development instructions](https://github.com/TryGhost/Ghost#quick-start-install).
 
 ## Have a bug or issue?
 
