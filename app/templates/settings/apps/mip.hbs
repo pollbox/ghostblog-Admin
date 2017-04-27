@@ -1,0 +1,35 @@
+<header class="view-header">
+    {{#gh-view-title openMobileMenu="openMobileMenu"}}<span style="padding-left:1px">{{#link-to "settings.apps.index"}}Apps{{/link-to}} <i class="icon-arrow-right" style="display:inline"></i> MIP</span>{{/gh-view-title}}
+    <section class="view-actions">
+        {{#gh-spin-button id="saveSlackIntegration" class="btn btn-green" action=(action "save") submitting=isSaving}}
+            保存
+        {{/gh-spin-button}}
+    </section>
+</header>
+<section class="view-container">
+    <section class="view-content">
+        <section class="app-grid">
+            <div class="app-cell">
+                <img class="app-icon" src="{{gh-path 'admin' '/img/mipicon.png'}}" />
+            </div>
+            <div class="app-cell">
+                <h3>MIP</h3>
+                <p>移动页面加速器</p>
+            </div>
+        </section>
+        <section class="app-subtitle">
+            <p>Enable <a href="https://www.mipengine.org/">Baidu移动网页加速器</a> 为您的网站?</p>
+        </section>
+        <form class="app-config-form" id="mip-settings" novalidate="novalidate">
+            <div class="form-group for-checkbox">
+                <label for="amp">MIP支持您的出版物</label>
+                <label class="checkbox" for="mip">
+                    {{one-way-checkbox model id="mip" name="amp" type="checkbox" update=(action "update")}}
+                    <span class="input-toggle-component"></span>
+                    <p>启用MIP支持</p>
+                </label>
+            </div>
+        </form>
+
+    </section>
+</section>

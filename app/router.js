@@ -57,6 +57,7 @@ GhostRouter.map(function () {
     this.route('settings.apps', {path: '/settings/apps'}, function () {
         this.route('slack', {path: 'slack'});
         this.route('amp', {path: 'amp'});
+        this.route('mip', {path: 'mip'});
     });
 
     this.route('subscribers', function () {

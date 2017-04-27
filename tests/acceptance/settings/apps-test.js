@@ -99,5 +99,21 @@ describe('Acceptance: Settings - Apps', function () {
             });
         });
 
+        it('it redirects to MIP when clicking on the grid', function () {
+            visit('/settings/apps');
+
+            andThen(() => {
+                // has correct url
+                expect(currentURL(), 'currentURL').to.equal('/settings/apps');
+            });
+
+            click('#mip-link');
+
+            andThen(() => {
+                // has correct url
+                expect(currentURL(), 'currentURL').to.equal('/settings/apps/mip');
+            });
+        });
+
     });
 });

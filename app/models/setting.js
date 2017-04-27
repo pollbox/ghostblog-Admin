@@ -28,5 +28,6 @@ export default Model.extend(ValidationEngine, {
     isPrivate: attr('boolean'),
     password: attr('string'),
     slack: attr('slack-settings'),
-    amp: attr('boolean')
+    amp: attr('boolean'),
+    mip: attr('boolean')
 });

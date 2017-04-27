@@ -6,5 +6,6 @@ export default Controller.extend({
     appsController: injectController('settings.apps'),
 
     slack: alias('appsController.model.slack.firstObject'),
-    amp: alias('appsController.model.amp')
+    amp: alias('appsController.model.amp'),
+    mip: alias('appsController.model.mip')
 });

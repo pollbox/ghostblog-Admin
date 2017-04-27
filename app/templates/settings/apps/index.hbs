@@ -35,7 +35,7 @@
                         <figure class="apps-card-app-icon" style="background-image:url({{gh-path 'admin' '/img/ampicon.png'}})"></figure>
                         <div class="apps-card-meta">
                             <h3 class="apps-card-app-title">AMP</h3>
-                            <p class="apps-card-app-desc">Google加速移动页面</p>
+                            <p class="apps-card-app-desc">Google移动网页加速器</p>
                         </div>
                         <div class="apps-configured">
                             {{#if amp}}
@@ -49,7 +49,32 @@
                 </article>
                 {{/link-to}}
             </div>
-        </div>
+
+
+          <div class="apps-grid-cell">
+              {{#link-to "settings.apps.mip" id="mip-link"}}
+              <article class="apps-card-app">
+                  <div class="apps-card-content">
+                      <figure class="apps-card-app-icon" style="background-image:url({{gh-path 'admin' '/img/mipicon.png'}})"></figure>
+                      <div class="apps-card-meta">
+                          <h3 class="apps-card-app-title">MIP</h3>
+                          <p class="apps-card-app-desc">Baidu移动网页加速器</p>
+                      </div>
+                      <div class="apps-configured">
+                          {{#if mip}}
+                              <span class="green">启用</span>
+                          {{else}}
+                              <span>配置</span>
+                          {{/if}}
+                          <i class="icon-arrow-right"></i>
+                      </div>
+                  </div>
+              </article>
+              {{/link-to}}
+          </div>
+
+    </div>
+
         <p class="apps-grid-note">(更多即将推出!)</p>
     </section>
 </section>

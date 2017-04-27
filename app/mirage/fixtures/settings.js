@@ -224,6 +224,17 @@ export default [
         value: 'true'
     },
     {
+        created_at: '2017-01-09T08:40:59.000Z',
+        created_by: 1,
+        id: 19,
+        key: 'mip',
+        type: 'blog',
+        updated_at: '2017-01-09T08:49:42.991Z',
+        updated_by: 1,
+        uuid: '27eb0ac8-a511-4b47-899b-4c1e408dfecd',
+        value: 'true'
+    },
+    {
         key: 'availableThemes',
         id: 24,
         value: [
